@@ -1,0 +1,6 @@
+lxml
+tqdm
+orjson
+pydantic
+requests
+beautifulsoup4
