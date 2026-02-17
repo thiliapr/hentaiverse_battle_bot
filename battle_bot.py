@@ -258,7 +258,7 @@ def auto_battle(
             end = min(len(enemy_list), target_index + config.attack_target_range + 1)
             window = enemy_list[start:end]
 
-            # 各属性分别累加
+            # 各攻击魔法的属性抗性分别累加
             for magic in config.attack_magic_skills:
                 resistance_sum = sum(
                     getattr(enemy.resistance, magic.attribute)

@@ -16,7 +16,7 @@ thiliapr/hentaiverse_battle_bot 是自由软件，遵循 [Affero GNU 通用公�
 ### 你需要什么
 - Python 3.10 或更高版本（因为使用了`Type | AnotherType`的联合类型写法）
 - 一个 E-Hentai 账号，点击[E-Hentai 登录](https://e-hentai.org/bounce_login.php?b=d&bt=1-1)注册或登录
-- 这个账号对应的 HentaiVerse 必须达到可以使用至少一个攻击魔法的等级（[Wiki](https://ehwiki.org/wiki/Spells) 中说是 15 级，可以使用`Fiery Blast	`）
+- 这个账号对应的 HentaiVerse 必须达到可以使用至少一个攻击魔法的等级（[Wiki](https://ehwiki.org/wiki/Spells) 中说是 15 级，可以使用`Fiery Blast`）
 - 带多点`Mana Draught`、`Health Draught`、`Mana Potion`、`Health Potion`（详情见 [Wiki](https://ehwiki.org/wiki/Items#Restoratives)），连续战斗时特别有用
 
 ### 安装
