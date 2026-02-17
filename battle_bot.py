@@ -239,14 +239,20 @@ def auto_battle(
                 continue
             print(f"[危险] 你没有回蓝物品，蓝量只有 {get_player_mana(soups)}，血量只有 {get_player_health(soups)}")
 
-        # 如果只有 1 个敌人存活，而且蓝量没有达到期望，那么在此阶段防御、等待药水效果回蓝，并顺带刷一下 CD
-        update_enemy_data(enemy_list, soups)
+        # 如果只有 1 个敌人存活，而且蓝量没有达到期望，那么就回蓝，并顺带刷一下 CD
         if sum(enemy.is_alive for enemy in enemy_list) == 1 and get_player_mana(soups) < config.end_battle_mana_target:
-            do_action(action_defend)
+            # 不用 Elixir，因为费钱，而且要留着紧急情况用
+            for item_name in ["Mana Gem", "Mana Potion"]:
+                if (item_id := try_to_get_item_id(item_name, soups["pane_item"])) is not None:
+                    do_action(action_item | {"skill": item_id})
+                    break
+            else:
+                do_action(action_defend)
             continue
 
         # 攻击阶段，计算攻击哪个目标的抗性和最小
-        # 格式: ((目标, 魔法), (抗性和, 该属性的攻击消耗的魔法点数)
+        # 格式: ((目标, 魔法 ID), (抗性和, 该属性的攻击消耗的魔法点数)
+        update_enemy_data(enemy_list, soups)
         attack_options = []
         for target_index in range(len(enemy_list)):
             # 你不能攻击一个死掉了的怪物
@@ -260,17 +266,21 @@ def auto_battle(
 
             # 各攻击魔法的属性抗性分别累加
             for magic in config.attack_magic_skills:
+                # 该攻击魔法不可用，可能是在等 CD 吧
+                if (magic_id := try_to_get_magic_id(magic.name, soups["table_magic"])) is None:
+                    continue
+
                 resistance_sum = sum(
                     getattr(enemy.resistance, magic.attribute)
                     for enemy in window
                     if enemy.is_alive  # 只计算还活着的怪物的抗性
                 )
-                attack_options.append(((target_index, magic), (resistance_sum, magic.mana_cost)))
+                attack_options.append(((target_index, magic_id), (resistance_sum, magic.mana_cost)))
 
         # 选择抗性总和最小、消耗点数最少的攻击选项并执行攻击
         # 在游戏中，0 代表玩家本人，1 代表第一个怪物，2 代表第二个怪物，依此类推
         (best_target, best_magic), _ = min(attack_options, key=lambda x: x[1][0] + x[1][1] * config.mana_cost_weight)
-        do_action(base_action_json | {"mode": "magic", "target": best_target + 1, "skill": try_to_get_magic_id(best_magic.name, soups["table_magic"])})
+        do_action(base_action_json | {"mode": "magic", "target": best_target + 1, "skill": best_magic})
 
         # 打印信息
         update_enemy_data(enemy_list, soups)
