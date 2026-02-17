@@ -47,7 +47,7 @@ python -m pip install -r requirements.txt
         {"name": "Gale", "mana_cost": 5, "attribute": "wind"},
         {"name": "Smite", "mana_cost": 13, "attribute": "holy"}
     ],
-    "world": "/"
+    "world": ""
 }
 ```
 
@@ -58,7 +58,7 @@ python -m pip install -r requirements.txt
 4. 开启一场战斗，确保敌人足够多，然后用一个魔法攻击第一个目标，数一数多少个敌人受到了伤害，这个数字减去 1，就是示例中的`attack_target_range`（除了指定了的目标外，你还可以攻击目标周围多少个怪兽）
 5. `safe_health_threshold`、`safe_mana_threshold`和`end_battle_mana_target`需要根据自己的实际情况和经验设置
 6. `attack_magic_skills`填写你目前可用的攻击魔法。需要提供在游戏中的显示名称、魔法的属性，以及该魔法消耗的蓝量。你可以开启一场战斗，然后点击 UI 上方的`SKILLBOOK`，然后点击出现在下方的 `SPELLS` 查看你能用你的攻击魔法的名称、攻击属性和耗蓝量。属性包括`["fire", "cold", "elec", "wind", "holy", "dark"]`这六种。如果你发现你没有对应的魔法，别担心，大概只是你没有达到相应等级而已。各个魔法的解锁等级见 [Wiki](https://ehwiki.org/wiki/Spells)
-7. `world`的值有两个: `/`和`/isekai`。详情请参见 [Wiki](https://ehwiki.org/wiki/Isekai)
+7. `world`的值有两个: 空和`isekai`。详情请参见 [Wiki](https://ehwiki.org/wiki/Isekai)
 8. 将所有项目配置完成后，将配置文件保存到一个地方
 
 ### 运行

@@ -41,8 +41,8 @@ class BattleBotConfig(BaseModel):
     end_battle_mana_target: float = Field(..., description="战斗结束前期望达到的蓝量，达到后终结最后一个敌人")
     # 不同等级的玩家，即使是同样的魔法，消耗的蓝量也不同。并且低等级还不能使用高等级的魔法
     attack_magic_skills: list[MagicInfo] = Field(..., description="所有当前可用的魔法")
-    # 游戏有两个世界: / 和 /isekai。/ 代表 Persistent，玩家数据会一直保持；/isekai 是季度性的，每个季度会刷新，可以用于增幅 Persistent
-    world: Literal["/", "/isekai"] = Field("/", description="游戏世界类型: /，代表 Persistent，永久保存角色进度；/isekai，代表 Isekai，季度重置，可获得增幅奖励")
+    # 游戏有两个世界: 空 和 isekai。空 代表 Persistent，玩家数据会一直保持；/isekai 是季度性的，每个季度会刷新，可以用于增幅 Persistent
+    world: Literal["", "isekai"] = Field("", description="游戏世界类型: 空，代表 Persistent，永久保存角色进度；isekai，代表 Isekai，季度重置，可获得增幅奖励")
 
 
 class MonsterResistanceData(BaseModel):
