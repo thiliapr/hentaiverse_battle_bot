@@ -129,7 +129,7 @@ def get_player_effects(soups: dict[str, BeautifulSoup]) -> set[str]:
 
 def update_enemy_data(enemy_list: list[EnemyData], soups: dict[str, BeautifulSoup]):
     # 更新敌人生死信息
-    for i, (enemy, monster_element) in enumerate(zip(enemy_list, soups["pane_monster"].find_all(class_="btm1")), start=1):
+    for enemy, monster_element in zip(enemy_list, soups["pane_monster"].find_all(class_="btm1")):
         enemy.is_alive = "onclick" in monster_element.attrs
 
 
