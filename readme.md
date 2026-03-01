@@ -10,11 +10,11 @@ thiliapr/hentaiverse_battle_bot 是自由软件，遵循 [Affero GNU 通用公�
 - 它可以让你开启一个[战斗](https://ehwiki.org/wiki/Battles)，然后让脚本自动打怪
 - 你可以开 [GrindFest](https://hentaiverse.org/?s=Battle&ss=gr) 这种战斗（有 1000 场），然后在这里刷 [EXP](https://ehwiki.org/wiki/Experience_Points)、[熟练度](https://ehwiki.org/wiki/Proficiencies)、[物品](https://ehwiki.org/wiki/Items)、[装备](https://ehwiki.org/wiki/Equipment_Basics)和 [Credit](https://ehwiki.org/wiki/Credits)
 - 你可以用它刷 Credit，然后在 [E-Hentai](https://e-hentai.org/) 下载 [Gallery](https://ehwiki.org/wiki/Galleries)。这种方式是完全免费的！
-- Chrome/Chromium 浏览器，并把`chrome.exe`所在目录加入 PATH 路径，推荐使用`ungoogled-chromium`，你可以从[Woolyss 的 Chromium Collection](https://chromium.woolyss.com/)下载预编译版本。你也可以使用其他浏览器，但是请修改`battle_bot.py`中的`webbrowser.get("chrome")`为你使用的浏览器，webbrowser 支持的浏览器列表见[文档](https://docs.python.org/zh-cn/3.14/library/webbrowser.html)
 
 ## 快速开始
 ### 你需要什么
 - Python 3.10 或更高版本（因为使用了`Type | AnotherType`的联合类型写法）
+- Chrome/Chromium 浏览器，并把`chrome.exe`所在目录加入 PATH 路径，推荐使用`ungoogled-chromium`，你可以从[Woolyss 的 Chromium Collection](https://chromium.woolyss.com/)下载预编译版本。你也可以使用其他浏览器，但是请修改`battle_bot.py`中的`webbrowser.get("chrome")`为你使用的浏览器，webbrowser 支持的浏览器列表见[文档](https://docs.python.org/zh-cn/3.14/library/webbrowser.html)
 - 一个 E-Hentai 账号，点击[E-Hentai 登录](https://e-hentai.org/bounce_login.php?b=d&bt=1-1)注册或登录
 - 这个账号对应的 HentaiVerse 必须达到可以使用至少一个攻击魔法的等级（[Wiki](https://ehwiki.org/wiki/Spells) 中说是 15 级，可以使用`Fiery Blast`）
 - 带多点`Mana Draught`、`Health Draught`、`Mana Potion`、`Health Potion`（详情见 [Wiki](https://ehwiki.org/wiki/Items#Restoratives)），连续战斗时特别有用
